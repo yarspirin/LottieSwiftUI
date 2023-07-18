@@ -15,7 +15,7 @@ final class LottieAnimationContainerView: UIView {
   init(name: String) {
     animationView = LottieAnimationView()
     animationView.animation = .named(name)
-    super.init()
+    super.init(frame: .zero)
     
     addSubview(animationView)
     enforceLayout()
