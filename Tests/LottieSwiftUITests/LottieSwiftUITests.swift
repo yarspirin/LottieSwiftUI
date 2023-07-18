@@ -1,3 +1,10 @@
+//
+//  LottieSwiftUITests.swift
+//
+//
+//  Created by Yaroslav Spirin on 18.07.2023.
+//
+
 import XCTest
 import SwiftUI
 import Lottie
@@ -5,7 +12,7 @@ import Lottie
 
 final class LottieSwiftUITests: XCTestCase {
   func testLottieViewCreation() {
-    let lottieView = LottieView(filename: "ExampleAnimation")
+    let lottieView = LottieView(name: "ExampleAnimation")
     XCTAssertNotNil(lottieView)
   }
 }

@@ -1,27 +1,24 @@
+//
+//  InternalLottieView.swift
+//  
+//
+//  Created by Yaroslav Spirin on 18.07.2023.
+//
+
 import SwiftUI
 import Lottie
 
 /// Lottie animation view available in SwiftUI.
-public struct LottieView {
-  /// The current progress of the animation.
+struct InternalLottieView {
   @Binding var animationProgress: AnimationProgressTime
-  
-  /// Whether the animation is currently playing.
   @Binding var isPlaying: Bool
   
-  /// The filename of the Lottie JSON animation file.
   let name: String
-  
-  /// The speed at which the animation should be played.
   let animationSpeed: CGFloat
-  
-  /// The loop mode of the animation.
   let loopMode: LottieLoopMode
-  
-  /// The completion handler to be called when the animation ends.
   let completion: ((Bool) -> Void)?
   
-  public init(
+  init(
     name: String,
     animationProgress: Binding<AnimationProgressTime> = .constant(0),
     isPlaying: Binding<Bool> = .constant(true),
@@ -38,8 +35,8 @@ public struct LottieView {
   }
 }
 
-extension LottieView: UIViewRepresentable {
-  public class Coordinator: NSObject {
+extension InternalLottieView: UIViewRepresentable {
+  class Coordinator: NSObject {
     @Binding var animationProgress: AnimationProgressTime
     @Binding var isPlaying: Bool
     var completion: ((Bool) -> Void)?
@@ -51,31 +48,28 @@ extension LottieView: UIViewRepresentable {
     }
   }
   
-  public func makeCoordinator() -> Coordinator {
+  func makeCoordinator() -> Coordinator {
     Coordinator(animationProgress: $animationProgress, isPlaying: $isPlaying, completion: completion)
   }
   
-  public func makeUIView(context: UIViewRepresentableContext<LottieView>) -> LottieAnimationView {
-    let view = LottieAnimationView()
-    view.animation = LottieAnimation.named(name)
-    view.contentMode = .scaleAspectFit
-    return view
+  func makeUIView(context: UIViewRepresentableContext<InternalLottieView>) -> LottieAnimationContainerView {
+    LottieAnimationContainerView(name: name)
   }
   
-  public func updateUIView(_ uiView: LottieAnimationView, context: UIViewRepresentableContext<LottieView>) {
-    uiView.animationSpeed = animationSpeed
-    uiView.loopMode = loopMode
-    uiView.currentProgress = animationProgress
-    
+  func updateUIView(_ uiView: LottieAnimationContainerView, context: UIViewRepresentableContext<InternalLottieView>) {
+    uiView.animationView.animationSpeed = animationSpeed
+    uiView.animationView.loopMode = loopMode
+    uiView.animationView.currentProgress = animationProgress
+
     if isPlaying {
-      uiView.play { finished in
+      uiView.animationView.play { finished in
         context.coordinator.completion?(finished)
         DispatchQueue.main.async {
           self.isPlaying = false
         }
       }
     } else {
-      uiView.pause()
+      uiView.animationView.pause()
     }
   }
 }
