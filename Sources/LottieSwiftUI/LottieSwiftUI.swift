@@ -10,7 +10,7 @@ public struct LottieView {
   @Binding var isPlaying: Bool
   
   /// The filename of the Lottie JSON animation file.
-  let filename: String
+  let name: String
   
   /// The speed at which the animation should be played.
   let animationSpeed: CGFloat
@@ -22,14 +22,14 @@ public struct LottieView {
   let completion: ((Bool) -> Void)?
   
   public init(
-    filename: String,
+    name: String,
     animationProgress: Binding<AnimationProgressTime> = .constant(0),
     isPlaying: Binding<Bool> = .constant(true),
     animationSpeed: CGFloat = 1.0,
     loopMode: LottieLoopMode = .loop,
     completion: ((Bool) -> Void)? = nil
   ) {
-    self.filename = filename
+    self.name = name
     _animationProgress = animationProgress
     _isPlaying = isPlaying
     self.animationSpeed = animationSpeed
@@ -57,8 +57,8 @@ extension LottieView: UIViewRepresentable {
   
   public func makeUIView(context: UIViewRepresentableContext<LottieView>) -> LottieAnimationView {
     let view = LottieAnimationView()
-    view.animation = LottieAnimation.named(filename)
-    view.contentMode = .scaleAspectFill
+    view.animation = LottieAnimation.named(name)
+    view.contentMode = .scaleAspectFit
     return view
   }
   

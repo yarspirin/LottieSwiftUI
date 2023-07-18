@@ -5,7 +5,7 @@ import Lottie
 
 final class LottieSwiftUITests: XCTestCase {
   func testLottieViewCreation() {
-    let lottieView = LottieView(name: "ExampleAnimation")
+    let lottieView = LottieView(filename: "ExampleAnimation")
     XCTAssertNotNil(lottieView)
   }
 }
