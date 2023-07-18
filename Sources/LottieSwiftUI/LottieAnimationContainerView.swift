@@ -1,6 +1,6 @@
 //
 //  LottieAnimationContainerView.swift
-//  
+//
 //
 //  Created by Yaroslav Spirin on 18.07.2023.
 //
@@ -15,6 +15,7 @@ final class LottieAnimationContainerView: UIView {
   init(name: String) {
     animationView = LottieAnimationView()
     animationView.animation = .named(name)
+    
     super.init(frame: .zero)
     
     addSubview(animationView)
