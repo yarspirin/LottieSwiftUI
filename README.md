@@ -4,6 +4,8 @@ LottieSwiftUI is a powerful and easy-to-use package that brings Lottie animation
 
 Lottie is a library for iOS, Android, and Web that parses Adobe After Effects animations exported as json and renders them natively!
 
+<img src="https://raw.githubusercontent.com/mountain-viewer/LottieSwiftUI/master/Resources/sample.gif" height="300">
+
 ## Features
 
 - Display Lottie animations in SwiftUI
