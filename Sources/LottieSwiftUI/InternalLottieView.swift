@@ -8,7 +8,6 @@
 import SwiftUI
 import Lottie
 
-/// Lottie animation view available in SwiftUI.
 struct InternalLottieView {
   let name: String
   let animationSpeed: CGFloat

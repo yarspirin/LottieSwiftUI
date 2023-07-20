@@ -15,7 +15,7 @@ Lottie is a library for iOS, Android, and Web that parses Adobe After Effects an
 This package uses Swift Package Manager, which is integrated with Xcode. Here's how you can add **LottieSwiftUI** to your project:
 
 1. In Xcode, select "File" > "Swift Packages" > "Add Package Dependency"
-2. Enter the URL for this repository (https://github.com/mountain-viewer/LottieSwiftUI)
+2. Enter the URL for this repository (https://github.com/yarspirin/LottieSwiftUI)
 
 ## Usage
 
