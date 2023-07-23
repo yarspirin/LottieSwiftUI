@@ -9,6 +9,7 @@ A Swift package that provides a SwiftUI interface to the popular [Lottie](https:
 - Swift/SwiftUI native integration.
 - Customize animation speed.
 - Choose loop mode: play once, loop, or auto reverse.
+- Control of animation playback (play, pause, stop).
 - Clean, organized, and thoroughly documented code.
 - Efficient and performance-optimized design.
 
@@ -28,11 +29,14 @@ import SwiftUI
 import LottieSwiftUI
 
 struct ContentView: View {
+  @State private var playbackState: LottieView.PlaybackState = .playing
+
   var body: some View {
     LottieView(
       name: "london_animation", // Replace with your Lottie animation name
       animationSpeed: 1.0,
-      loopMode: .loop
+      loopMode: .loop,
+      playbackState: $playbackState
     )
   }
 }
@@ -42,9 +46,14 @@ struct ContentView: View {
 
 Properties:
 
-- name: The name of the Lottie animation file (without the file extension). This file should be added to your project's assets.
-- animationSpeed: The speed of the animation. It should be a CGFloat value, where 1.0 represents the normal speed. Defaults to 1.0.
-- loopMode: The loop mode for the animation. Default is LottieLoopMode.playOnce. Other options include .loop and .autoReverse.
+- `name`: The name of the Lottie animation file (without the file extension). This file should be added to your project's assets.
+- `animationSpeed`: The speed of the animation. It should be a CGFloat value, where 1.0 represents the normal speed. Defaults to 1.0.
+- `loopMode`: The loop mode for the animation. Default is LottieLoopMode.playOnce. Other options include .loop and .autoReverse.
+- `playbackState`: The playback state of the animation. It should be a `Binding<PlaybackState>`, allowing the state to be shared between multiple views. This allows for the control of the animation (play, pause, stop) from the parent view.
+
+### Controlling Animation Playback
+
+To control the animation playback, pass a `Binding` to `PlaybackState` to `LottieView`. This will allow you to control the animation's state (play, pause, stop) from its parent view or any other part of your app. For example, you could bind it to a SwiftUI `@State` property, and then modify that state when a button is pressed to control the animation.
 
 ## Requirements
 - iOS 13.0+
