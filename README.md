@@ -1,14 +1,16 @@
 # LottieSwiftUI
 
-LottieSwiftUI is a powerful and easy-to-use package that brings Lottie animations to the SwiftUI world. With just a few lines of code, you can add stunning animations to your SwiftUI applications, improving user engagement and user interface aesthetics.
+A Swift package that provides a SwiftUI interface to the popular [Lottie](https://airbnb.design/lottie/) animation library. The LottieSwiftUI package allows you to easily add and control Lottie animations in your SwiftUI project. It offers a clean and easy-to-use API with customizable options like animation speed and loop mode.
 
-Lottie is a library for iOS, Android, and Web that parses Adobe After Effects animations exported as json and renders them natively!
+<img src="https://raw.githubusercontent.com/mountain-viewer/LottieSwiftUI/master/Resources/sample.gif" height="300">
 
 ## Features
 
-- Display Lottie animations in SwiftUI
-- Configure animation loop mode
-- Configure animation speed
+- Swift/SwiftUI native integration.
+- Customize animation speed.
+- Choose loop mode: play once, loop, or auto reverse.
+- Clean, organized, and thoroughly documented code.
+- Efficient and performance-optimized design.
 
 ## Installation
 
@@ -22,10 +24,27 @@ This package uses Swift Package Manager, which is integrated with Xcode. Here's 
 Here's an example of how you can use `LottieView` in your SwiftUI code:
 
 ```swift
-LottieView(name: "your_animation", animationSpeed: 1.0, loopMode: .loop)
+import SwiftUI
+import LottieSwiftUI
+
+struct ContentView: View {
+  var body: some View {
+    LottieView(
+      name: "london_animation", // Replace with your Lottie animation name
+      animationSpeed: 1.0,
+      loopMode: .loop
+    )
+  }
+}
 ```
 
-Replace "your_animation" with the name of your animation file (without the .json extension).
+<img src="https://raw.githubusercontent.com/mountain-viewer/LottieSwiftUI/master/Resources/sample.gif" height="300">
+
+Properties:
+
+- name: The name of the Lottie animation file (without the file extension). This file should be added to your project's assets.
+- animationSpeed: The speed of the animation. It should be a CGFloat value, where 1.0 represents the normal speed. Defaults to 1.0.
+- loopMode: The loop mode for the animation. Default is LottieLoopMode.playOnce. Other options include .loop and .autoReverse.
 
 ## Requirements
 - iOS 13.0+
