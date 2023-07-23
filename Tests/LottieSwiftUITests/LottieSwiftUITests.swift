@@ -12,7 +12,7 @@ import Lottie
 
 final class LottieSwiftUITests: XCTestCase {
   func testLottieViewCreation() {
-    let lottieView = LottieView(name: "ExampleAnimation")
+    let lottieView = LottieView(name: "ExampleAnimation", playbackState: .constant(.playing))
     XCTAssertNotNil(lottieView)
   }
 }
